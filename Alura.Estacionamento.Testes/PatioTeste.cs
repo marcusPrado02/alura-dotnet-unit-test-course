@@ -1,10 +1,20 @@
 using Alura.Estacionamento.Alura.Estacionamento.Modelos;
 using Alura.Estacionamento.Modelos;
+using Xunit.Abstractions;
 
 namespace Alura.Estacionamento.Testes;
 
-public class PatioTeste
+public class PatioTeste : IDisposable
 {
+    
+    private Veiculo veiculo;
+    public ITestOutputHelper SaidaConsoleTeste;
+    public PatioTeste(ITestOutputHelper _saidaConsoleTeste)
+    {
+        SaidaConsoleTeste = _saidaConsoleTeste;
+        SaidaConsoleTeste.WriteLine("Constructor Invocado");
+        veiculo = new Veiculo();
+    }
     [Fact]
     public void ValidaFaturamento()
     {
@@ -53,7 +63,7 @@ public class PatioTeste
     }
     [Theory]
     [InlineData("Luiza Silva", "asd-9499", "vermelho","Gol")]
-    public void LocalizaVeiculoPatio(string propietario,
+    public void LocalizaVeiculoPatioComBaseNaPlaca(string propietario,
         string placa,
         string cor,
         string modelo)
@@ -73,7 +83,7 @@ public class PatioTeste
     }
     
     [Fact]
-    public void DadosAutomovel()
+    public void FichaInformacoesAutomovel()
     {
         //Arrange
         var carro = new Veiculo();
@@ -87,5 +97,34 @@ public class PatioTeste
 
         //Assert
         Assert.Contains("Ficha do veículo:", dados);
+    }
+    
+    [Fact]
+    public void TestaNomeProprietarioVeiculoComMenosDeTresCaracteres()
+    {
+        string nomeProprietario = "Ab";
+        
+        Assert.Throws<System.FormatException>(
+            () => new Veiculo(nomeProprietario)
+                );
+    }
+    
+    [Fact]
+    public void TestaUltimosCaracteresPlacaVeiculoComoNumeros()
+    {
+        //Arrange
+        string placaFormatoErrado = "ASD-995U";
+
+        //Assert
+        Assert.Throws<FormatException>(
+            //Act
+            () => new Veiculo().Placa= placaFormatoErrado
+        );
+
+    }
+
+    public void Dispose()
+    {
+        SaidaConsoleTeste.WriteLine("Constructor Invocado");
     }
 }
