@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "O1mVk7PKHT7SAWa90m0QqZ7qzwg6HXcP1THZ+kY/7oSrWxusZdKs0xxEZC4wSyDw+17AUPz0VevKHhylHVEEgQ==",
+  "success": true,
+  "projectFilePath": "/home/marcus/Desktop/personal_projects/dotnet_alura/alura.estacionamento-aula01/Alura.Estacionamento/Alura.Estacionamento.csproj",
+  "expectedPackageFiles": [
+    "/home/marcus/.nuget/packages/microsoft.netcore.app.ref/5.0.0/microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
+    "/home/marcus/.nuget/packages/microsoft.aspnetcore.app.ref/5.0.0/microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "/home/marcus/.nuget/packages/microsoft.netcore.app.host.linux-x64/5.0.17/microsoft.netcore.app.host.linux-x64.5.0.17.nupkg.sha512"
+  ],
+  "logs": []
+}
